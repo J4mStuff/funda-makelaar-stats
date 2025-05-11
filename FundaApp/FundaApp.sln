@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FundaApp", "FundaApp.csproj", "{976CCC12-A09A-4B8E-9780-9D42F0835727}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{523087AD-1631-45CD-98C6-D2A3CC2B4B79}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5EA1B036-081C-426A-A6B9-00B816F73134}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{6A2BB8FD-ACD0-46E1-B346-8C2934422E24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{976CCC12-A09A-4B8E-9780-9D42F0835727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{976CCC12-A09A-4B8E-9780-9D42F0835727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{976CCC12-A09A-4B8E-9780-9D42F0835727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{976CCC12-A09A-4B8E-9780-9D42F0835727}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{976CCC12-A09A-4B8E-9780-9D42F0835727} = {523087AD-1631-45CD-98C6-D2A3CC2B4B79}
+	EndGlobalSection
+EndGlobal
