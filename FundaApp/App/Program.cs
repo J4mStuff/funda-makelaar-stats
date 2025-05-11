@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace FundaApp;
+namespace App;
 
 public static class Program
 {
