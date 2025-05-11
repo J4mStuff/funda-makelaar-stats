@@ -1,4 +1,3 @@
-using Config;
 using Models;
 using Newtonsoft.Json;
 
@@ -85,7 +84,7 @@ public class RequestHandler
 
     private string BuildRequestString(string apiKey, bool withGarden)
     {
-        var url = _httpClient.BaseAddress + $"json/{apiKey}/?type={Constants.Purchase}&zo=/amsterdam/"; 
-        return withGarden ? $"{url}{Constants.Garden}/" : url;
+        var url = _httpClient.BaseAddress + $"json/{apiKey}/?type=koop&zo=/amsterdam/"; 
+        return withGarden ? $"{url}tuin/" : url;
     }
 }
