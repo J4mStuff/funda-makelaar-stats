@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace ModelsTests;
 
 public class UnitTest1
