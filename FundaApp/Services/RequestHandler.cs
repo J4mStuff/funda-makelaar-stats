@@ -21,19 +21,19 @@ public class RequestHandler
         var firstPage = await RetrievePageData(uri, 1);
         entryList.AddRange(firstPage.Objects);
 
-        var tasks = Enumerable.Range(2, firstPage.Paging.PageCount).Select(async page =>
+        var tasks = Enumerable.Range(2, firstPage.Paging.PageCount/10).Select(async page =>
         {
-            Console.WriteLine($"Processing page {page}");
-            var pageResponse = await GetRateLimitedPageData(uri, 1);
+            Logger.Debug($"Processing page {page}");
+            var pageResponse = await GetRateLimitedPageData(uri, page);
             entryList.AddRange(pageResponse.Objects);
-            Console.WriteLine($"Processed {entryList.Count}/{firstPage.EntryCountTotal} entries."); 
+            Logger.Debug($"Processed {entryList.Count}/{firstPage.EntryCountTotal} entries."); 
         });
         
         await Task.WhenAll(tasks);
 
         if (entryList.Count != firstPage.EntryCountTotal)
         {
-            Console.WriteLine($"Unexpected number of entries returned, expected {firstPage.EntryCountTotal}, got {entryList.Count}");
+            Logger.Info($"Unexpected number of entries returned, expected {firstPage.EntryCountTotal}, got {entryList.Count}");
         }
         
         return entryList;
