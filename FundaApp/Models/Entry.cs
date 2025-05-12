@@ -12,7 +12,4 @@ public class Entry
 
     [JsonProperty(PropertyName = "MakelaarNaam")]
     public required string AgentName { get; init; }
-    
-    [JsonProperty(PropertyName = "VerkoopStatus")]
-    public required string Status { get; init; }
 }
