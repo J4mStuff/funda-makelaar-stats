@@ -12,14 +12,7 @@ public static class Program
 
     private static async Task Run()
     {
-        RequestHandler requestHandler = new();
-        
-        var entriesWithNoGarden = await requestHandler.MakeRequests(false);
-        var topTen = AgentStatProcessor.ProcessAgents(entriesWithNoGarden);
-        TablePrinter.PrintListToTable(topTen);
-        
-        var entriesWithGarden = await requestHandler.MakeRequests(true);
-        var topTenWithGarden = AgentStatProcessor.ProcessAgents(entriesWithGarden);
-        TablePrinter.PrintListToTable(topTenWithGarden);
+        await StatRequestProcessor.ProcessStats(true);
+        await StatRequestProcessor.ProcessStats(false);
     }
 }
