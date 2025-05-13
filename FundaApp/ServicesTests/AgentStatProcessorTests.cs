@@ -14,7 +14,7 @@ public class AgentStatProcessorTests
     {
         var entries = BuildEntryList(100);
         var result = AgentStatProcessor.ProcessAgents(entries);
-        
+
         Assert.Equal(10, result.Count);
         Assert.Equal(10, result.First().TotalCount);
     }
@@ -24,7 +24,7 @@ public class AgentStatProcessorTests
     {
         var entries = new List<Entry>();
         var result = AgentStatProcessor.ProcessAgents(entries);
-        
+
         Assert.Empty(result);
     }
 
@@ -33,7 +33,7 @@ public class AgentStatProcessorTests
     {
         var entries = BuildEntryList(3);
         var result = AgentStatProcessor.ProcessAgents(entries);
-        
+
         Assert.Single(result);
         Assert.Equal(3, result.First().TotalCount);
     }
@@ -43,11 +43,11 @@ public class AgentStatProcessorTests
     {
         var entries = BuildEntryList(20);
         var result = AgentStatProcessor.ProcessAgents(entries);
-        
+
         Assert.Equal(3, result.Count);
         Assert.Equal(10, result.First().TotalCount);
     }
-    
+
     private static List<Entry> BuildSingleAgentEntry(int agentId, int entryCount)
     {
         var entries = new List<Entry>();
@@ -60,6 +60,7 @@ public class AgentStatProcessorTests
                 Id = Guid.NewGuid()
             });
         }
+
         return entries;
     }
 
@@ -76,7 +77,7 @@ public class AgentStatProcessorTests
             {
                 break;
             }
-            
+
             entries.AddRange(BuildSingleAgentEntry(10 - i, toAdd));
             countAdded += toAdd;
         }
@@ -88,9 +89,9 @@ public class AgentStatProcessorTests
                 AgentId = i,
                 AgentName = $"agent {i}",
                 Id = Guid.NewGuid()
-            });           
+            });
         }
 
-        return entries;    
+        return entries;
     }
 }

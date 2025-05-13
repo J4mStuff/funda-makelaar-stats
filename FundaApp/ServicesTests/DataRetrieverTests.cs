@@ -40,7 +40,8 @@ public class DataRetrieverTests
         //This tried to actually do things rather than mock response, not sure why
         _client.GetAndEnsureSuccessAsync(Arg.Any<string>()).Returns(string.Empty);
 
-        await Assert.ThrowsAsync<ArgumentNullException>(async () => await _underTest.RetrievePageData(unpaginatedUri, 1));
+        await Assert.ThrowsAsync<ArgumentNullException>(async () =>
+            await _underTest.RetrievePageData(unpaginatedUri, 1));
     }
 
     [Theory]

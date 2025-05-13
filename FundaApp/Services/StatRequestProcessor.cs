@@ -7,7 +7,7 @@ public static class StatRequestProcessor
         var httpClient = new HttpClientWrapper();
         var apiKey = await File.ReadAllTextAsync("data/secret.txt");
         var dataRetriever = new DataRetriever(httpClient, apiKey);
-        
+
         var requestHandler = new EntryListBuilder(dataRetriever);
 
         var entriesWithNoGarden = await requestHandler.BuildEntryList(gardenPresent);

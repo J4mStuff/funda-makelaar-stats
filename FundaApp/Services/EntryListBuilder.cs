@@ -16,7 +16,7 @@ public class EntryListBuilder(IDataRetriever dataRetriever)
         var firstPage = await dataRetriever.RetrievePageData(uri, 1);
         entryList.AddRange(firstPage.Objects);
 
-        var tasks = Enumerable.Range(2, firstPage.Paging.PageCount-1).Select(async page =>
+        var tasks = Enumerable.Range(2, firstPage.Paging.PageCount - 1).Select(async page =>
         {
             Logger.Debug($"Processing page {page}");
             var pageResponse = await GetRateLimitedPageData(uri, page);
@@ -56,5 +56,4 @@ public class EntryListBuilder(IDataRetriever dataRetriever)
 
         return response;
     }
-
 }

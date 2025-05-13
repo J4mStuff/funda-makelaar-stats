@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Services;
 
-public class DataRetriever(IHttpClientWrapper httpClient, string apiKey) :IDataRetriever
+public class DataRetriever(IHttpClientWrapper httpClient, string apiKey) : IDataRetriever
 {
     private readonly JsonSerializer _jsonSerializer = JsonSerializer.Create();
 
@@ -37,5 +37,5 @@ public class DataRetriever(IHttpClientWrapper httpClient, string apiKey) :IDataR
     {
         var url = $"json/{apiKey}/?type=koop&zo=/amsterdam/";
         return withGarden ? $"{url}tuin/" : url;
-    }  
+    }
 }

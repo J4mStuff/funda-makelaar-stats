@@ -8,7 +8,7 @@ public static class Logger
     {
         Console.WriteLine(message);
     }
-    
+
     public static void Debug(string message)
     {
         if (Debugger.IsAttached)

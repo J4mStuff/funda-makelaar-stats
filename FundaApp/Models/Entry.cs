@@ -4,9 +4,8 @@ namespace Models;
 
 public class Entry
 {
-    [JsonProperty(PropertyName = "Id")]
-    public required Guid Id { get; init; }
-    
+    [JsonProperty(PropertyName = "Id")] public required Guid Id { get; init; }
+
     [JsonProperty(PropertyName = "MakelaarId")]
     public required int AgentId { get; init; }
 
