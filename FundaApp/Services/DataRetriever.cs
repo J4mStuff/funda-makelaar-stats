@@ -3,10 +3,10 @@ using Newtonsoft.Json;
 
 namespace Services;
 
-public class DataRetriever(HttpClient httpClient, string apiKey)
+public class DataRetriever(IHttpClientWrapper httpClient, string apiKey) :IDataRetriever
 {
     private readonly JsonSerializer _jsonSerializer = JsonSerializer.Create();
-    
+
     public async Task<ResponseModel> RetrievePageData(string unpaginatedUri, int pageNumber)
     {
         /*
@@ -21,16 +21,8 @@ public class DataRetriever(HttpClient httpClient, string apiKey)
          > properly calculate page total
          */
         var uri = $"{unpaginatedUri}&page={pageNumber}&pagesize=25";
-        var jsonResponse = await MakeRequestAsync(uri);
+        var jsonResponse = await httpClient.GetAndEnsureSuccessAsync(uri);
         return ParseResponse(jsonResponse);
-    }
-
-    private async Task<string> MakeRequestAsync(string uri)
-    {
-        using var response = await httpClient.GetAsync(uri);
-        response.EnsureSuccessStatusCode();
-
-        return await response.Content.ReadAsStringAsync();       
     }
 
     private ResponseModel ParseResponse(string jsonResponse)
@@ -43,7 +35,7 @@ public class DataRetriever(HttpClient httpClient, string apiKey)
 
     public string BuildRequestUri(bool withGarden)
     {
-        var url = httpClient.BaseAddress + $"json/{apiKey}/?type=koop&zo=/amsterdam/";
+        var url = $"json/{apiKey}/?type=koop&zo=/amsterdam/";
         return withGarden ? $"{url}tuin/" : url;
     }  
 }
