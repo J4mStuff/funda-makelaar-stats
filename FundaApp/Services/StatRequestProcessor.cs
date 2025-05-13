@@ -2,9 +2,8 @@ namespace Services;
 
 public static class StatRequestProcessor
 {
-    public static async Task ProcessStats(bool gardenPresent)
+    public static async Task ProcessStats(IHttpClientWrapper httpClient, bool gardenPresent)
     {
-        var httpClient = new HttpClientWrapper();
         var apiKey = await File.ReadAllTextAsync("data/secret.txt");
         var dataRetriever = new DataRetriever(httpClient, apiKey);
 
@@ -12,6 +11,6 @@ public static class StatRequestProcessor
 
         var entriesWithNoGarden = await requestHandler.BuildEntryList(gardenPresent);
         var topTen = AgentStatProcessor.ProcessAgents(entriesWithNoGarden);
-        TablePrinter.PrintListToTable(topTen);
+        TablePrinter.PrintListToTable(topTen, gardenPresent);
     }
 }

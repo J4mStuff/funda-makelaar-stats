@@ -21,7 +21,7 @@ public class DataRetriever(IHttpClientWrapper httpClient, string apiKey) : IData
          > properly calculate page total
          */
         var uri = $"{unpaginatedUri}&page={pageNumber}&pagesize=25";
-        var jsonResponse = await httpClient.GetAndEnsureSuccessAsync(uri);
+        var jsonResponse = await httpClient.MakeRateLimitedRequest(uri);
         return ParseResponse(jsonResponse);
     }
 

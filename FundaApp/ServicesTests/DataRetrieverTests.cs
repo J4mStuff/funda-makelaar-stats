@@ -25,7 +25,7 @@ public class DataRetrieverTests
         var expectedModel = BuildSampleResponseString();
 
         //This tried to actually do things rather than mock response, not sure why
-        _client.GetAndEnsureSuccessAsync(Arg.Any<string>()).Returns(JsonConvert.SerializeObject(expectedModel));
+        _client.MakeRateLimitedRequest(Arg.Any<string>()).Returns(JsonConvert.SerializeObject(expectedModel));
 
         var result = await _underTest.RetrievePageData(unpaginatedUri, 1);
 
@@ -38,7 +38,7 @@ public class DataRetrieverTests
         const string unpaginatedUri = "http://example.com/";
 
         //This tried to actually do things rather than mock response, not sure why
-        _client.GetAndEnsureSuccessAsync(Arg.Any<string>()).Returns(string.Empty);
+        _client.MakeRateLimitedRequest(Arg.Any<string>()).Returns(string.Empty);
 
         await Assert.ThrowsAsync<ArgumentNullException>(async () =>
             await _underTest.RetrievePageData(unpaginatedUri, 1));
