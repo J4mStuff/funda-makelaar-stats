@@ -16,4 +16,12 @@ public static class Logger
             Console.WriteLine(message);
         }
     }
+
+    public static void Error(string message)
+    {
+        Console.BackgroundColor = ConsoleColor.Red;
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine(message);
+        Console.ResetColor();
+    }
 }
